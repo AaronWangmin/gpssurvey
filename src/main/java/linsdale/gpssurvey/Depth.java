@@ -19,17 +19,28 @@ package linsdale.gpssurvey;
 import java.util.Objects;
 
 /**
- *
+ * The Depth Class - represents a depth in metres.
+ * 
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class Depth {
 
     private final double value;
 
+    /**
+     * Constructor
+     *
+     * @param value the depth (in metres)
+     */
     public Depth(double value) {
         this.value = value;
     }
     
+    /**
+     * Get the depth value.
+     *
+     * @return the depth value (in metres)
+     */
     public double get() {
         return value;
     }
@@ -45,10 +56,17 @@ public class Depth {
         return String.format("%8.2f", value);
     }
     
+    /**
+     * Format the depth value as a String. The string representation includes the
+     * units symbol.
+     *
+     * @return the formated string
+     */
     public String toStringWithUnits() {
         return String.format("%8.2f m", value);
     }
     
+    // equals working to the accuracy of the formatted string (ie to 2 dp in this case)
     @Override
     public boolean equals(Object other) {
         if (other instanceof Depth) {

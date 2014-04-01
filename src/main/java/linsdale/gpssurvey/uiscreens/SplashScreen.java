@@ -23,17 +23,23 @@ import linsdale.rpi.screenlib.ScreenWithTick;
 import linsdale.rpi.screenlib.SerialTFTDisplay;
 
 /**
+ * The opening splash screen.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
-public class SplashScreen extends ScreenWithTick  {
+public class SplashScreen extends ScreenWithTick {
 
-
+    /**
+     * Constructor.
+     *
+     * @param display the display device
+     * @throws IOException if problems
+     */
     public SplashScreen(SerialTFTDisplay display) throws IOException {
         super("splash", display, 5);
         addZone(new GPSLogoZone(display, "Starting..."));
     }
-    
+
     @Override
     public void tick(Ticker t) throws IOException {
         t.cancel();

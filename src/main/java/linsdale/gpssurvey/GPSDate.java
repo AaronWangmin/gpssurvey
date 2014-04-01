@@ -17,7 +17,8 @@
 package linsdale.gpssurvey;
 
 /**
- *
+ * The GPSDate Class - represents a date.
+ * 
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class GPSDate {
@@ -26,6 +27,13 @@ public class GPSDate {
     private final int month;
     private final int year;
     
+    /**
+     * Constructor.
+     * 
+     * @param day the day of the month
+     * @param month the month of the year
+     * @param year the year
+     */
     public GPSDate(int day, int month, int year) {
         this.day = day;
         this.month = month;
@@ -37,6 +45,11 @@ public class GPSDate {
         return String.format("%02d/%02d/%04d", day, month, year);
     }
     
+    /**
+     * Format the date in yyyymmdd format.
+     * 
+     * @return the formated string
+     */
     public String toISOString() {
         return String.format("%04d%02d%02d", year, month, day);
     }

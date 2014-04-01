@@ -35,7 +35,8 @@ import linsdale.rpi.threadlib.MDThread;
 import linsdale.rpi.threadlib.Reporting;
 
 /**
- *
+ * The Thread Listening for IR button presses.
+ * 
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class IrListener extends MDThread<Command> {
@@ -63,14 +64,18 @@ public class IrListener extends MDThread<Command> {
     private final I2CDevice device; // the i2c device
     private InterruptListener interruptlistener;
     
-    public static IrListener createAndStart() throws IOException {
+    /**
+     * Create listening thread and start it.
+     * 
+     * @throws IOException if problems
+     */
+    public static void createAndStart() throws IOException {
         IrListener thread = new IrListener();
         thread.start();
         thread.sendMessage(Command.START);
-        return thread;
     }
 
-    public IrListener() throws IOException {
+    private IrListener() throws IOException {
         super("IR Listener", Command.CLOSE);
         Reporting.registerControl("IR Listener", 'i');
         gpio = GpioFactory.getInstance();
@@ -89,7 +94,7 @@ public class IrListener extends MDThread<Command> {
                 break;
             case CLOSE:
                 i2cInt.removeListener(interruptlistener);
-                // brute force close down GPIO - needs to be done else where if we ever have multiple GPIO users
+                // brute force close down GPIO - needs to be done elsewhere if we ever have multiple GPIO users
                 gpio.removeAllListeners();
                 gpio.shutdown();
                 break;

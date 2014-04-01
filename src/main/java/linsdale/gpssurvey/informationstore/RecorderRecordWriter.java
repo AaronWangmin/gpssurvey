@@ -25,21 +25,31 @@ import linsdale.gpssurvey.informationstore.Recorder.RecordWriterCommand;
 import linsdale.rpi.threadlib.MDThread;
 
 /**
+ * The Recorder for Record (track) files.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class RecorderRecordWriter extends MDThread<RecordWriterCommand> {
 
+    /**
+     * The filename to be used for the record (track) files
+     */
     public String filename = null;
+
+    /**
+     * The list of list to be inserted into the file.
+     */
     public List<String> lines;
 
-    public static RecorderRecordWriter createAndStart() {
+    /**
+     * Create and start the Record (track) Recorder thread.
+     */
+    public static void createAndStart() {
         RecorderRecordWriter thread = new RecorderRecordWriter();
         thread.start();
-        return thread;
     }
 
-    public RecorderRecordWriter() {
+    private RecorderRecordWriter() {
         super("RecordWriter", RecordWriterCommand.CLOSE, 50);
     }
 

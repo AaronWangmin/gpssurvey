@@ -17,28 +17,71 @@
 package linsdale.gpssurvey;
 
 /**
- *
+ * The Position Class.
+ * 
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class Position {
 
     private final static double metresPerDegreeLat = 6371000 * Math.PI / 180;
 
+    /**
+     * The Latitude
+     */
     public final Latitude latitude;
+
+    /**
+     * The Longitude
+     */
     public final Longitude longitude;
+
+    /**
+     * The X coordinate (east) from origin
+     */
     public final Coordinate x;
+
+    /**
+     * The y coordinate (north) from origin
+     */
     public final Coordinate y;
+
+    /**
+     * The distance from origin
+     */
     public final Distance distance;
+
+    /**
+     * The course from origin
+     */
     public final Course course;
 
+    /**
+     * Constructor. Create a position with latitude/longitude values only.
+     * 
+     * @param latitude the latitude
+     * @param longitude the longitude
+     */
     public Position(Latitude latitude, Longitude longitude) {
         this(latitude, longitude, null);
     }
 
+    /**
+     * Constructor.  Create a position with both latitude/longitude and relative values.
+     * 
+     * @param from the origin for relative calculation
+     * @param to the position
+     */
     public Position(Position from, Position to) {
         this(to.latitude, to.longitude, from);
     }
 
+    /**
+     * Constructor.  Create a position with both latitude/longitude and relative values.
+     * 
+     * @param latitude the latitude
+     * @param longitude the longitude
+     * @param origin the origin for relative calculation
+     */
     public Position(Latitude latitude, Longitude longitude, Position origin) {
         this.latitude = latitude;
         this.longitude = longitude;

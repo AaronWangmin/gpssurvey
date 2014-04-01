@@ -31,6 +31,8 @@ import linsdale.rpi.screenlib.SerialTFTDisplay.Font;
 import linsdale.rpi.screenlib.TextZone;
 
 /**
+ * Screen to display current location (as distance and course) - relative to
+ * reference point and last recorded point.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
@@ -55,6 +57,12 @@ public class PositionScreen extends Screen implements ScreenDataChangeProcessor 
     private final TextZone ptdistance;
     private final static PixelPosition ptdistancepos = new PixelPosition(HALFWIDTH, 96);
 
+    /**
+     * Constructor.
+     *
+     * @param display the display device
+     * @throws IOException if problems
+     */
     public PositionScreen(SerialTFTDisplay display) throws IOException {
         super("position", display);
         addZone(header = new TextZone(display, headerpos, fullwidthx1, Font.SIZE_7x14, CharSet.ISO_8859_1)
@@ -83,6 +91,12 @@ public class PositionScreen extends Screen implements ScreenDataChangeProcessor 
         dataChanged(Controller.getLocationData());
     }
 
+    /**
+     * Location Data change handler.
+     *
+     * @param ld new location data
+     * @throws IOException if problems
+     */
     @Override
     public void dataChanged(LocationData ld) throws IOException {
         Position l = ld.getPosition();

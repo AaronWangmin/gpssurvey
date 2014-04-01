@@ -30,6 +30,7 @@ import linsdale.rpi.screenlib.SerialTFTDisplay.CharSet;
 import linsdale.rpi.screenlib.TextZone;
 
 /**
+ * Screen display reference location information.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
@@ -57,6 +58,13 @@ public class ReferenceLocationScreen extends Screen {
     //
     private final boolean displaydepth;
 
+    /**
+     * Constructor.
+     *
+     * @param display the display device
+     * @param displaydepth if true display depth else display altitude
+     * @throws IOException if problems
+     */
     public ReferenceLocationScreen(SerialTFTDisplay display, boolean displaydepth) throws IOException {
         super("reference location", display);
         this.displaydepth = displaydepth;

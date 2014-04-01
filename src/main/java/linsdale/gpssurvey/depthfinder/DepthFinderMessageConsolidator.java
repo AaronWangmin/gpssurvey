@@ -26,6 +26,8 @@ import net.sf.marineapi.nmea.sentence.MTWSentence;
 import net.sf.marineapi.nmea.sentence.VHWSentence;
 
 /**
+ * The Consolidator of depth information to create a Depth message parameter set
+ * and to send the message when all information has been consolidated.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
@@ -33,18 +35,34 @@ public class DepthFinderMessageConsolidator {
 
     private ConsolidatedDepthFinderData depthfinderdata = null;
 
+    /**
+     * Process a VHW sentence.
+     *
+     * @param s sentence
+     */
     public void insertVHW(VHWSentence s) {
         Reporting.report("Depth Finder Reader", 4, "VHW sentence presented for processing");
         Reporting.report("Depth Finder Reader", 6, "%s", s);
         // ignore at present
     }
 
-    public void insertMTW(MTWSentence s) throws IOException {
+    /**
+     * Process a MTW sentence.
+     *
+     * @param s sentence
+     */
+    public void insertMTW(MTWSentence s) {
         Reporting.report("Depth Finder Reader", 4, "MTW sentence presented for processing");
         Reporting.report("Depth Finder Reader", 6, "%s", s);
         // ignore at present
     }
 
+    /**
+     * Process a DPT sentence.
+     *
+     * @param s sentence
+     * @throws IOException if send message fails
+     */
     public void insertDPT(DPTSentence s) throws IOException {
         Reporting.report("Depth Finder Reader", 4, "DPT sentence presented for processing");
         Reporting.report("Depth Finder Reader", 6, "%s", s);
@@ -60,13 +78,14 @@ public class DepthFinderMessageConsolidator {
         depthfinderdata = null;
     }
 
+    /**
+     * Data Structure to store and transfer the consolidated depth information.
+     */
     public static class ConsolidatedDepthFinderData {
-        public int setup = 0;
-        public static final int VHWSETUP = 1;
-        public static final int MTWSETUP = 2;
-        public static final int DPTSETUP = 4;
-        public static final int ALLSETUP = VHWSETUP | MTWSETUP | DPTSETUP;
-        //
+
+        /**
+         * The depth of water
+         */
         public Depth depth;
     }
 }

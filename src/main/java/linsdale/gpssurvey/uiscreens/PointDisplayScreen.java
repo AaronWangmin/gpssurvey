@@ -44,6 +44,12 @@ public class PointDisplayScreen extends Screen implements ScreenDataChangeProces
     private final TextZone pointinformation;
     private final static PixelPosition pointinformationpos = new PixelPosition(0, 44);
 
+    /**
+     * Screen to display course and distance from a range of previously recorded points.
+     * 
+     * @param display the display device
+     * @throws IOException if problems
+     */
     public PointDisplayScreen(SerialTFTDisplay display) throws IOException {
         super("position", display);
         addZone(header = new TextZone(display, headerpos, fullwidthx3, Font.SIZE_7x14, CharSet.ISO_8859_1)
@@ -58,6 +64,12 @@ public class PointDisplayScreen extends Screen implements ScreenDataChangeProces
         dataChanged(Controller.getLocationData());
     }
 
+    /**
+     * Location Data changed handler.
+     * 
+     * @param ld new location data
+     * @throws IOException if problems
+     */
     @Override
     public void dataChanged(LocationData ld) throws IOException {
         int pointcount = ld.getPointsSize();

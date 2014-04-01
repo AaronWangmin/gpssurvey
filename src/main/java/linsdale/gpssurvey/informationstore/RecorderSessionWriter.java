@@ -22,6 +22,7 @@ import linsdale.gpssurvey.informationstore.Recorder.SessionWriterCommand;
 import linsdale.rpi.threadlib.MDThread;
 
 /**
+ * The Recorder for Session files.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
@@ -29,13 +30,15 @@ public class RecorderSessionWriter extends MDThread<SessionWriterCommand> {
 
     private PrintWriter sessionout = null;
 
-    public static RecorderSessionWriter createAndStart() {
+    /**
+     * Create and start the Session Recorder thread.
+     */
+    public static void createAndStart() {
         RecorderSessionWriter thread = new RecorderSessionWriter();
         thread.start();
-        return thread;
     }
 
-    public RecorderSessionWriter() {
+    private RecorderSessionWriter() {
         super("SessionWriter", SessionWriterCommand.CLOSE, 50);
     }
 
@@ -43,7 +46,7 @@ public class RecorderSessionWriter extends MDThread<SessionWriterCommand> {
     protected void processMessage(SessionWriterCommand command, Object commandParameters) throws IOException {
         switch (command) {
             case CLOSE:
-                if (sessionout != null ) {
+                if (sessionout != null) {
                     sessionout.println("END");
                     sessionout.close();
                 }

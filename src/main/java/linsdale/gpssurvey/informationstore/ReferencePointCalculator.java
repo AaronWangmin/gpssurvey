@@ -26,6 +26,8 @@ import linsdale.gpssurvey.gpsreader.GPSMessageConsolidator.ConsolidatedGPSData;
 import linsdale.gpssurvey.informationstore.LocationData.Location;
 
 /**
+ * Reference Point Calculator. Used to calculate a reference point, using a
+ * average of a number of successive locations.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
@@ -41,10 +43,16 @@ public class ReferencePointCalculator {
     private int depthrefcounter;
     private boolean collectingreferencelocation;
 
+    /**
+     * Constructor
+     */
     public ReferencePointCalculator() {
         collectingreferencelocation = false;
     }
 
+    /**
+     * Start to collect information to calculate the reference point
+     */
     public final void start() {
         if (!collectingreferencelocation) {
             gpsrefcounter = REFSAMPLECOUNT;
@@ -58,6 +66,12 @@ public class ReferencePointCalculator {
         }
     }
 
+    /**
+     * Set a depth data point.
+     *
+     * @param depthdata the depth
+     * @return the reference location if data calculation is complete else null
+     */
     public Location depthDataPoint(Depth depthdata) {
         if (collectingreferencelocation && depthrefcounter > 0) {
             depth += depthdata.get();
@@ -67,6 +81,12 @@ public class ReferencePointCalculator {
         return null;
     }
 
+    /**
+     * Set a gps data point.
+     *
+     * @param gpsdata the gps data
+     * @return the reference location if data calculation is complete else null
+     */
     public Location gpsDataPoint(ConsolidatedGPSData gpsdata) {
         if (collectingreferencelocation && gpsrefcounter > 0) {
             latitude += gpsdata.position.latitude.get();

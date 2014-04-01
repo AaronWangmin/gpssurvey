@@ -19,17 +19,28 @@ package linsdale.gpssurvey;
 import java.util.Objects;
 
 /**
- *
+ * The HDOP class. HDOP is an acronym for horizontal dilution of precision.
+ * 
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class HDOP {
 
     private final double value;
 
+    /**
+     * Constructor
+     *
+     * @param value the HDOP value
+     */
     public HDOP(double value) {
         this.value = value;
     }
 
+    /**
+     * Get the HDOP value.
+     *
+     * @return the HDOP value (in metres)
+     */
     public double get() {
         return value;
     }
@@ -45,6 +56,7 @@ public class HDOP {
         return String.format("%6.2f", value);
     }
     
+    // equals working to the accuracy of the formatted string (ie to 2 dp in this case)
     @Override
     public boolean equals(Object other) {
         if (other instanceof HDOP) {

@@ -29,7 +29,8 @@ import linsdale.rpi.screenlib.VariableBarWidget;
 import linsdale.rpi.screenlib.Zone;
 
 /**
- *
+ * A Zone showing message and progress bar.
+ * 
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class WaitingForZone implements Zone {
@@ -45,7 +46,13 @@ public class WaitingForZone implements Zone {
     private int count = MINCOUNT + 1;
     private boolean countup = true;
    
-
+    /**
+     * Constructor.
+     * 
+     * @param display the display device
+     * @param message the message to display
+     * @throws IOException if problems
+     */
     public WaitingForZone(SerialTFTDisplay display, String message) throws IOException {
         msg = new TextZone(display, msgpos, msgsize, Font.SIZE_10x20, CharSet.ISO_8859_1)
                 .setCentre().setForeground(Colour.WHITE);
@@ -54,6 +61,9 @@ public class WaitingForZone implements Zone {
                 0, 10, Colour.GREEN, display.getBackground());
     }
 
+    /**
+     * Update the progress bar display
+     */
     public void onTick() {
         if (count == MINCOUNT) {
             countup = true;

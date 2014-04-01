@@ -27,6 +27,8 @@ import linsdale.rpi.screenlib.TextZone;
 import linsdale.rpi.screenlib.Zone;
 
 /**
+ * A Screen Zone which draws the application logo screen with optional appended
+ * user text.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
@@ -53,6 +55,13 @@ public class GPSLogoZone implements Zone {
     private final static PixelPosition msgpos = new PixelPosition(0, 100);
     private final static HybridArea msgsize = new HybridArea(160, 1);
 
+    /**
+     * Constructor.
+     * 
+     * @param display the display device
+     * @param message the user message to add to the logo
+     * @throws IOException if problems
+     */
     public GPSLogoZone(SerialTFTDisplay display, String message) throws IOException {
         gps1 = new TextZone(display, gps1pos, gps1size, LOGOFONT, CharSet.ISO_8859_1, 0, 0)
                 .setCentre().setTransparent().setForeground(LOGOCOLOUR);
@@ -71,6 +80,12 @@ public class GPSLogoZone implements Zone {
         msg.insert(message);
     }
 
+    /**
+     * Set the user message text.
+     * 
+     * @param message the user message to add to the logo
+     * @throws IOException if problems
+     */
     public void setMessage(String message) throws IOException {
         msg.insert(message);
     }

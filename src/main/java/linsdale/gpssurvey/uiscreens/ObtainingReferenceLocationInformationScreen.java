@@ -26,6 +26,8 @@ import linsdale.rpi.screenlib.ScreenWithTick;
 import linsdale.rpi.screenlib.SerialTFTDisplay;
 
 /**
+ * Screen to be displayed will waiting for reference location data to be
+ * collected.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
@@ -34,6 +36,12 @@ public class ObtainingReferenceLocationInformationScreen extends ScreenWithTick
 
     private final WaitingForZone zone;
 
+    /**
+     * Constructor.
+     *
+     * @param display the display device
+     * @throws IOException if problems
+     */
     public ObtainingReferenceLocationInformationScreen(SerialTFTDisplay display) throws IOException {
         super("obtaining reference location information", display, 1);
         addZone(zone = new WaitingForZone(display, "Obtaining Reference Location"));
@@ -50,6 +58,12 @@ public class ObtainingReferenceLocationInformationScreen extends ScreenWithTick
         View.displayRepaint();
     }
 
+    /**
+     * Location Data changed handler.
+     *
+     * @param ld updated location data.
+     * @throws IOException if problems
+     */
     @Override
     public void dataChanged(LocationData ld) throws IOException {
         if (ld.getReferenceLocation() != null) {

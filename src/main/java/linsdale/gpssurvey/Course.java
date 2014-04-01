@@ -19,17 +19,27 @@ package linsdale.gpssurvey;
 import java.util.Objects;
 
 /**
- *
+ * The Course Class - represents a heading (0-359 degrees)
+ * 
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class Course {
 
     private final double value;
 
+    /**
+     *Constructor
+     *
+     * @param value the course (in degrees)
+     */
     public Course(double value) {
         this.value = value;
     }
 
+    /**
+     * Get the course value.
+     * @return the course value (in degrees)
+     */
     public double get() {
         return value;
     }
@@ -45,10 +55,17 @@ public class Course {
         return String.format("%6.0f", value);
     }
     
+    /**
+     * Format the course value as a String. The string representation includes the
+     * units symbol.
+     *
+     * @return the formated string
+     */
     public String toStringWithUnits() {
         return String.format("%6.0f°", value);
     }
     
+    // equals working to the accuracy of the formatted string (ie to 0 dp in this case)
     @Override
     public boolean equals(Object other) {
         if (other instanceof Course) {

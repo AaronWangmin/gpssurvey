@@ -24,6 +24,7 @@ import linsdale.rpi.screenlib.ScreenWithTick;
 import linsdale.rpi.screenlib.SerialTFTDisplay;
 
 /**
+ * Screen to display while waiting for GPS device to lock on.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
@@ -31,6 +32,12 @@ public class WaitingForGPSScreen extends ScreenWithTick {
 
     private final WaitingForZone zone;
 
+    /**
+     * Constructor.
+     *
+     * @param display the display device
+     * @throws IOException if problems
+     */
     public WaitingForGPSScreen(SerialTFTDisplay display) throws IOException {
         super("waiting for GPS", display, 1);
         addZone(zone = new WaitingForZone(display,

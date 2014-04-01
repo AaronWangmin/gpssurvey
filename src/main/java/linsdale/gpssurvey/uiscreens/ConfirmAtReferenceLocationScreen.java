@@ -39,6 +39,7 @@ import linsdale.rpi.screenlib.VariableLogBarWidget;
 import linsdale.rpi.threadlib.Reporting;
 
 /**
+ * Screen - confirming acceptance of Reference point information.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
@@ -76,6 +77,14 @@ public class ConfirmAtReferenceLocationScreen extends Screen
     //
     private final boolean displaydepth;
 
+    /**
+     * Constructor.
+     *
+     * @param display the display device
+     * @param displaydepth true if depth is displayed else altitude will be
+     * displayed
+     * @throws IOException if problems
+     */
     public ConfirmAtReferenceLocationScreen(SerialTFTDisplay display, boolean displaydepth) throws IOException {
         super("confirm at reference location", display);
         this.displaydepth = displaydepth;
@@ -98,7 +107,7 @@ public class ConfirmAtReferenceLocationScreen extends Screen
                 .setRight());
         addZone(depthlabel = new TextZone(display, depthlabelpos, labelwidthx1, Font.SIZE_7x14, CharSet.ISO_8859_1)
                 .setRight());
-        depthlabel.insert(displaydepth?"Depth: ":"Altitude: ");
+        depthlabel.insert(displaydepth ? "Depth: " : "Altitude: ");
         addZone(depth = new TextZone(display, depthpos, fieldwidthx1, Font.SIZE_7x14, CharSet.ISO_8859_1)
                 .setRight());
         addZone(hDOP = new TextZone(display, hDOPpos, hDOParea, Font.SIZE_6x12, CharSet.ISO_8859_1));
@@ -111,6 +120,15 @@ public class ConfirmAtReferenceLocationScreen extends Screen
         dataChanged(Controller.getLocationData());
     }
 
+    /**
+     * Action Handler for buttons.
+     *
+     * Select confirms acceptance.
+     *
+     * @param button the button
+     * @return true if button actioned
+     * @throws IOException if problems
+     */
     @Override
     public boolean actionOnButton(Button button) throws IOException {
         Reporting.report("Screen", 3, "ConfirmAtReferenceLocation processing command %s", button);
@@ -121,6 +139,12 @@ public class ConfirmAtReferenceLocationScreen extends Screen
         return false;
     }
 
+    /**
+     * Location Data changed handler.
+     *
+     * @param ld new location data
+     * @throws IOException if problems
+     */
     @Override
     public void dataChanged(LocationData ld) throws IOException {
         Location l = ld.getLocation();

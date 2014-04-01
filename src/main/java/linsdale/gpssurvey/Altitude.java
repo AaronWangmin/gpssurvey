@@ -19,17 +19,28 @@ package linsdale.gpssurvey;
 import java.util.Objects;
 
 /**
+ * The Altitude Class.
  *
- * @author rRichard Linsdale (richard.linsdale at blueyonder.co.uk)
+ * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class Altitude {
 
     private final double value;
 
+    /**
+     * Constructor
+     *
+     * @param value the altitude (in metres)
+     */
     public Altitude(double value) {
         this.value = value;
     }
 
+    /**
+     * Get the altitude value.
+     *
+     * @return the altitude value (in metres)
+     */
     public double get() {
         return value;
     }
@@ -39,16 +50,23 @@ public class Altitude {
     public Altitude clone() {
         return new Altitude(value);
     }
-    
+
     @Override
     public String toString() {
         return String.format("%8.1f", value);
     }
-    
+
+    /**
+     * Format the altitude value as a String. The string representation includes the
+     * units symbol.
+     *
+     * @return the formated string
+     */
     public String toStringWithUnits() {
         return String.format("%8.1f m", value);
     }
-    
+
+    // equals working to the accuracy of the formatted string (ie to 1 dp in this case)
     @Override
     public boolean equals(Object other) {
         if (other instanceof Altitude) {
@@ -60,6 +78,6 @@ public class Altitude {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(value)<<6;
+        return Objects.hashCode(value) << 6;
     }
 }

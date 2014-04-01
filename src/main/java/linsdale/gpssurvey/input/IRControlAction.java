@@ -19,24 +19,67 @@ package linsdale.gpssurvey.input;
 import java.io.IOException;
 
 /**
+ * Actions interface for IR Controller Buttons.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public interface IRControlAction {
-    
+
+    /**
+     * Button Definitions
+     */
     public static enum Button {
 
+        /**
+         * The Power-down button on the IR plate
+         */
         POWERDOWN, // the controller most likely will handle his one (std action - so will not be seen by screen)
-        POWER,      // ... ditto
+
+        /**
+         * Button Power on IR controller
+         */
+        POWER, // ... ditto
+
+        /**
+         * Button A on IR controller
+         */
         A,
+        /**
+         * Button B on IR controller
+         */
         B,
+        /**
+         * Button C on IR controller
+         */
         C,
+        /**
+         * Button Up on IR controller
+         */
         UP,
+        /**
+         * Button Down on IR controller
+         */
         DOWN,
+        /**
+         * Button Left on IR controller
+         */
         LEFT,
+        /**
+         * Button Right on IR controller
+         */
         RIGHT,
+        /**
+         * Button Select on IR controller
+         */
         SELECT
     }
-    
+
+    /**
+     * Button Action Handler.
+     *
+     * @param button the button pressed
+     * @return true if button action processed
+     * @throws IOException if problems
+     */
     public boolean actionOnButton(Button button) throws IOException;
 }

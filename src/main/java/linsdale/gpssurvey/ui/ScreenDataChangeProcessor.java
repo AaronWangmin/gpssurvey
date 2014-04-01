@@ -20,10 +20,18 @@ import java.io.IOException;
 import linsdale.gpssurvey.informationstore.LocationData;
 
 /**
+ * Interface for use in screens with location data presentation (which is
+ * dynamic).
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public interface ScreenDataChangeProcessor {
-    
+
+    /**
+     * Called when location data has changed.
+     *
+     * @param data the location data
+     * @throws IOException if problems
+     */
     public void dataChanged(LocationData data) throws IOException;
 }

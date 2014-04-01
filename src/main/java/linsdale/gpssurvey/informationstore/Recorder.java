@@ -24,29 +24,75 @@ import linsdale.rpi.threadlib.MDTService;
 import linsdale.rpi.threadlib.Reporting;
 
 /**
+ * The Recorder class. Provides the data management associated with the
+ * recording of both session and track recordings.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class Recorder {
 
+    /**
+     * Commands used to control the Session Writer
+     */
     protected enum SessionWriterCommand {
 
-        CLOSE, OPENFILE, WRITE
+        /**
+         * Close Command
+         */
+        CLOSE,
+        /**
+         * Open File Command
+         */
+        OPENFILE,
+        /**
+         * Write Command
+         */
+        WRITE
     }
 
+    /**
+     * Commands used to control the Record (Track) Writer
+     */
     protected enum RecordWriterCommand {
 
-        CLOSE, OPENFILE, WRITE, CLOSEFILE, CANCELFILE
+        /**
+         * Close Command
+         */
+        CLOSE,
+        /**
+         * Open File Command
+         */
+        OPENFILE,
+        /**
+         * Write Command
+         */
+        WRITE,
+        /**
+         * Close File Command
+         */
+        CLOSEFILE,
+        /**
+         * Cancel File Command
+         */
+        CANCELFILE
     }
 
     private String filename;
     private boolean sessionfileopened = false;
 
+    /**
+     * Constructor
+     */
     public Recorder() {
         Reporting.registerControl("Recorder", 'r');
     }
 
-
+    /**
+     * Set a new Location as a track location.
+     *
+     * @param ld the location
+     * @throws IOException if problems
+     */
     public void locationChanged(LocationData ld) throws IOException {
         Location l = ld.getLocation();
         if (l != null) {
@@ -56,6 +102,12 @@ public class Recorder {
         }
     }
 
+    /**
+     * Start or Stop Recording a Record (Track).
+     *
+     * @param ld the location
+     * @throws IOException if problems
+     */
     public void startStopRecording(LocationData ld) throws IOException {
         if (ld.isRecording()) {
             // end and save
@@ -82,6 +134,12 @@ public class Recorder {
         }
     }
 
+    /**
+     * Cancel Recording of a Record (Track).
+     *
+     * @param ld the location
+     * @throws IOException if problems
+     */
     public void cancelRecording(LocationData ld) throws IOException {
         if (ld.isRecording()) {
             writeToSessionFile("CANCELRECORDING", ld);
@@ -91,6 +149,13 @@ public class Recorder {
         }
     }
 
+    /**
+     * Record the location as a point in the session file.
+     *
+     * @param ld the location
+     * @return true if point recorded
+     * @throws IOException if problems
+     */
     public boolean recordPoint(LocationData ld) throws IOException {
         Location l = ld.getLocation();
         if (l != null) {
@@ -101,6 +166,13 @@ public class Recorder {
         return false;
     }
 
+    /**
+     * Record the location as the reference location in the session file.
+     *
+     * @param ld the reference location
+     * @return true if location is recorded
+     * @throws IOException if problems
+     */
     public boolean recordReferenceLocation(LocationData ld) throws IOException {
         Location l = ld.getReferenceLocation();
         if (l != null) {

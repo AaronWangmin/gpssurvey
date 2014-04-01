@@ -30,19 +30,92 @@ import linsdale.rpi.threadlib.Reporting;
 public class GPSSportsInformationRecorder {
 
     // standard command set being used in this application
+    /**
+     * Standard command set - used as commmand in inter-Thread communications.
+     */
     public static enum Command {
 
+        /**
+         * Close down the thread
+         */
         CLOSE,
+        /**
+         * Start the thread activity
+         */
         START,
+        /**
+         * Stop the thread activity
+         */
         STOP,
+        /**
+         * GPS Information as parameters
+         */
         GPSINFO,
+        /**
+         * Depth Information as parameters
+         */
         DEPTHINFO,
+        /**
+         * Increment the Depth by 0.25m (manual depth tracking)
+         */
         INCDEPTH,
+        /**
+         * Decrement the Depth by 0.25m (manual depth tracking)
+         */
         DECDEPTH,
+        /**
+         * Button Information as parameter
+         */
         BUTTON
     }
 
     /**
+     * The Application Main method.
+     *
+     * Command line arguments are:
+     *
+     * 1) Define display options
+     *
+     * --display (or --show) "comma separated list of options"
+     *
+     * Options are:
+     *
+     * altitude or a - display altitude information (* - alternatives)
+     *
+     * depth or d - display depth information (* - alternatives)
+     *
+     * knots or k - display speed in knots (# - alternatives)
+     *
+     * mps or m - display speed in metre/second (# - alternatives)
+     *
+     * longlat or degres or ll - display positions using longitude and latitude
+     * (~ - alternatives)
+     *
+     * coordinates or metres or xy - display positions using metre based
+     * coordinates (~ - alternatives)
+     *
+     * 2) Define the GPS device (defaults is /dev/ttyAMA0)
+     *
+     * --gps (or -g) "gps device"
+     *
+     * 3) Define the Depthfinder device(default is /dev/ttyUSB1)
+     *
+     * --depthfinder (or -d) "depthfinder device"
+     *
+     * 4) Define the Screen device (default is /dev/ttyUSB0)
+     *
+     * --screen (or -s) "screen device"
+     *
+     * 5) Use keyboard input (default is IR receiver)
+     *
+     * --keyboardinput (or -i)
+     *
+     * 6) Set the reporting levels for the various sections
+     *
+     * --report (or -r) "reportingswitches"
+     *
+     * 7) Provide help and then exit --help (or -h)
+     *
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -78,7 +151,7 @@ public class GPSSportsInformationRecorder {
                                 break;
                             case "m":
                             case "mps":
-                                knots = true;
+                                knots = false;
                                 break;
                             case "a":
                             case "altitude":

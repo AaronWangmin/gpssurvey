@@ -31,6 +31,7 @@ import linsdale.rpi.screenlib.SerialTFTDisplay.Font;
 import linsdale.rpi.screenlib.TextZone;
 
 /**
+ * Screen displaying information about track recording.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
@@ -61,6 +62,12 @@ public class RecorderStatusScreen extends Screen implements ScreenDataChangeProc
     private final TextZone recordingdistance;
     private final static PixelPosition recordingdistancepos = new PixelPosition(HALFWIDTH, 114);
 
+    /**
+     * Constructor.
+     *
+     * @param display the display device
+     * @throws IOException if problems
+     */
     public RecorderStatusScreen(SerialTFTDisplay display) throws IOException {
         super("recorderstatus", display);
         addZone(header = new TextZone(display, headerpos, fullwidthx1, Font.SIZE_7x14, CharSet.ISO_8859_1)
@@ -71,14 +78,14 @@ public class RecorderStatusScreen extends Screen implements ScreenDataChangeProc
         addZone(recordedccount = new TextZone(display, recordedccountpos, fullwidthx1, Font.SIZE_7x14, CharSet.ISO_8859_1));
         addZone(reference = new TextZone(display, referencepos, fullwidthx1, Font.SIZE_7x14, CharSet.ISO_8859_1));
         addZone(referencecourse = new TextZone(display, referencecoursepos, halfwidthx1, Font.SIZE_7x14, CharSet.ISO_8859_1)
-            .setRight());
+                .setRight());
         addZone(referencedistance = new TextZone(display, referencedistancepos, halfwidthx1, Font.SIZE_7x14, CharSet.ISO_8859_1)
-            .setRight());
+                .setRight());
         addZone(recording = new TextZone(display, recordingpos, fullwidthx1, Font.SIZE_7x14, CharSet.ISO_8859_1));
         addZone(recordingcourse = new TextZone(display, recordingcoursepos, halfwidthx1, Font.SIZE_7x14, CharSet.ISO_8859_1)
-            .setRight());
+                .setRight());
         addZone(recordingdistance = new TextZone(display, recordingdistancepos, halfwidthx1, Font.SIZE_7x14, CharSet.ISO_8859_1)
-            .setRight());
+                .setRight());
     }
 
     @Override
@@ -86,6 +93,12 @@ public class RecorderStatusScreen extends Screen implements ScreenDataChangeProc
         dataChanged(Controller.getLocationData());
     }
 
+    /**
+     * Location Data change handler.
+     *
+     * @param ld new location data
+     * @throws IOException if problems
+     */
     @Override
     public void dataChanged(LocationData ld) throws IOException {
         pointcount.insert(String.format("Recorded %3d points", ld.getPointsSize()));

@@ -19,17 +19,28 @@ package linsdale.gpssurvey;
 import java.util.Objects;
 
 /**
- *
+ * The Distance Class - represents a distance (in metres).
+ * 
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class Distance {
 
     private final double value;
 
+    /**
+     * Constructor
+     *
+     * @param value the distance (in metres)
+     */
     public Distance(double value) {
         this.value = value;
     }
 
+    /**
+     * Get the distance value.
+     *
+     * @return the distance value (in metres)
+     */
     public double get() {
         return value;
     }
@@ -45,6 +56,12 @@ public class Distance {
         return String.format("%9.1f", value);
     }
     
+    /**
+     * Format the altitude value as a String. The string representation includes the
+     * units symbol.
+     *
+     * @return the formated string
+     */
     public String toStringWithUnits() {
         return String.format("%9.1f m", value);
     }

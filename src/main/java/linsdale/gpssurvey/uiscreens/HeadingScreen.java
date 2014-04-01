@@ -30,6 +30,7 @@ import linsdale.rpi.screenlib.SerialTFTDisplay.Font;
 import linsdale.rpi.screenlib.TextZone;
 
 /**
+ * Screen to display Heading and Speed.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
@@ -48,6 +49,14 @@ public class HeadingScreen extends Screen implements ScreenDataChangeProcessor {
     //
     private final boolean displayknots;
 
+    /**
+     * Constructor.
+     *
+     * @param display the display device
+     * @param displayknots true if speed to be displayed in knots otherwise
+     * metres/sec
+     * @throws IOException if problems
+     */
     public HeadingScreen(SerialTFTDisplay display, boolean displayknots) throws IOException {
         super("position", display);
         this.displayknots = displayknots;
@@ -70,6 +79,12 @@ public class HeadingScreen extends Screen implements ScreenDataChangeProcessor {
         dataChanged(Controller.getLocationData());
     }
 
+    /**
+     * Location data change handler
+     *
+     * @param ld the updated location data
+     * @throws IOException if problems
+     */
     @Override
     public void dataChanged(LocationData ld) throws IOException {
         course.insert(String.format("%3.0f", ld.getHeading()).trim());

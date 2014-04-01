@@ -40,6 +40,8 @@ import net.sf.marineapi.nmea.util.GpsFixStatus;
 import net.sf.marineapi.nmea.util.Time;
 
 /**
+ * The Consolidator of GPS information to create a gps message parameter set and
+ * to send the message when all information has been consolidated.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
@@ -48,6 +50,11 @@ public class GPSMessageConsolidator {
     private ConsolidatedGPSData gpsdata = null;
     private GPSTime oldtime = null;
 
+    /**
+     * Process a GGA sentence.
+     *
+     * @param s sentence
+     */
     public void insertGGA(GGASentence s) {
         Reporting.report("GPS Reader", 4, "GGA sentence presented for processing");
         Reporting.report("GPS Reader", 6, "%s", s);
@@ -72,11 +79,17 @@ public class GPSMessageConsolidator {
         gpsdata.position = new Position(
                 new Latitude(p.getLatitude(), p.getLatitudeHemisphere() == CompassPoint.SOUTH ? 'S' : 'N'),
                 new Longitude(p.getLongitude(), p.getLongitudeHemisphere() == CompassPoint.WEST ? 'W' : 'E')
-                );
+        );
         gpsdata.satelliteCount = s.getSatelliteCount();
         gpsdata.setup |= ConsolidatedGPSData.GGASETUP;
     }
 
+    /**
+     * Process a GSA sentence
+     *
+     * @param s sentence
+     * @throws IOException if send message fails
+     */
     public void insertGSA(GSASentence s) throws IOException {
         Reporting.report("GPS Reader", 4, "GSA sentence presented for processing");
         Reporting.report("GPS Reader", 6, "%s", s);
@@ -96,6 +109,12 @@ public class GPSMessageConsolidator {
         }
     }
 
+    /**
+     * Process VTG sentence.
+     *
+     * @param s sentence
+     * @throws IOException if send message fails
+     */
     public void insertVTG(VTGSentence s) throws IOException {
         Reporting.report("GPS Reader", 4, "VTG sentence presented for processing");
         Reporting.report("GPS Reader", 6, "%s", s);
@@ -116,6 +135,12 @@ public class GPSMessageConsolidator {
         }
     }
 
+    /**
+     * Process RMC sentence.
+     *
+     * @param s sentence
+     * @throws IOException if send message fails
+     */
     public void insertRMC(RMCSentence s) throws IOException {
         Reporting.report("GPS Reader", 4, "RMC sentence presented for processing");
         Reporting.report("GPS Reader", 6, "%s", s);
@@ -128,7 +153,7 @@ public class GPSMessageConsolidator {
             return; // ignore if no GGA processed
         }
         Date d = s.getDate();
-        gpsdata.date = new GPSDate(d.getDay(),d.getMonth(),d.getYear());
+        gpsdata.date = new GPSDate(d.getDay(), d.getMonth(), d.getYear());
         gpsdata.setup |= ConsolidatedGPSData.RMCSETUP;
         if (gpsdata.setup == ConsolidatedGPSData.ALLSETUP) {
             sendMessage();
@@ -141,25 +166,85 @@ public class GPSMessageConsolidator {
         gpsdata = null;
     }
 
+    /**
+     *
+     */
     public class ConsolidatedGPSData {
 
+        /**
+         * The status of the Consolidated Data - a set of bits indicating which
+         * parts of the consolidation have been completed.
+         */
         public int setup = 0;
+
+        /**
+         * flag indicating GGA data has been set
+         */
         public static final int GGASETUP = 1;
+
+        /**
+         * flag indicating GSA data has been set
+         */
         public static final int GSASETUP = 2;
+
+        /**
+         * flag indicating VTG data has been set
+         */
         public static final int VTGSETUP = 4;
+
+        /**
+         * flag indicating RMC data has been set
+         */
         public static final int RMCSETUP = 8;
+
+        /**
+         * the desired state of the setup flag indicating that consolidation is
+         * complete and is ready for sending.
+         */
         public static final int ALLSETUP = GGASETUP | GSASETUP | VTGSETUP | RMCSETUP;
         // from GGA
+
+        /**
+         * The GPS time
+         */
         public GPSTime time;
+
+        /**
+         * The Altitude
+         */
         public Altitude altitude;
+
+        /**
+         * The Position
+         */
         public Position position;
+
+        /**
+         * The Satellite Count
+         */
         public int satelliteCount;
         // from GSA
+
+        /**
+         * The HDOP
+         */
         public HDOP hDOP;
         // from VTG
+
+        /**
+         * The Course
+         */
         public double course;
+
+        /**
+         * The Speed (m/s)
+         */
         public double speed; // m/s
         // from RMC
+
+        /**
+         * The GPS Date
+         */
         public GPSDate date;
     }
 }

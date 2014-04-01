@@ -28,13 +28,19 @@ import net.sf.marineapi.nmea.sentence.Sentence;
 import net.sf.marineapi.nmea.sentence.VTGSentence;
 
 /**
- *
+ * The Sentence Listener for the GPS.
+ * 
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class GPSSentenceListener implements SentenceListener {
 
     private final GPSMessageConsolidator messageconsolidator = new GPSMessageConsolidator();
 
+    /**
+     * Listener is called on every sentence read.
+     *
+     * @param event the sentence event
+     */
     @Override
     public void sentenceRead(SentenceEvent event) {
         try {
@@ -53,14 +59,23 @@ public class GPSSentenceListener implements SentenceListener {
         }
     }
 
+    /**
+     * called when reader is paused
+     */
     @Override
     public void readingPaused() {
     }
 
+    /**
+     * called when reader is started
+     */
     @Override
     public void readingStarted() {
     }
 
+    /**
+     * called when reader is stopped
+     */
     @Override
     public void readingStopped() {
     }

@@ -22,6 +22,8 @@ import linsdale.gpssurvey.input.IRControlAction.Button;
 import linsdale.rpi.threadlib.Reporting;
 
 /**
+ * The Button Actions class - allows definition of Actions associated with
+ * buttons.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
@@ -36,28 +38,70 @@ public class ButtonActions implements IRControlAction {
     private final String defaultline;
     private final Action defaultaction;
 
+    /**
+     * Constructor
+     *
+     * @param title the title to be displayed in any menu associated with these
+     * button actions.
+     * @param defaultline the text to be displayed for the default action
+     * @param defaultaction the default action
+     */
     public ButtonActions(String title, String defaultline, Action defaultaction) {
         this.title = title;
         this.defaultline = defaultline;
         this.defaultaction = defaultaction;
     }
 
+    /**
+     * Constructor - no default action defined.
+     *
+     * @param title the title to be displayed in any menu associated with these
+     * button actions.
+     */
     public ButtonActions(String title) {
         this(title, null, null);
     }
 
+    /**
+     * Constructor - no default action defined.
+     */
     public ButtonActions() {
         this("", null, null);
     }
 
+    /**
+     * Add a button (without an action) and its associated menu text.
+     *
+     * @param button the button
+     * @param text the menu text
+     * @return this object
+     * @throws IOException if problems
+     */
     public ButtonActions addLine(Button button, String text) throws IOException {
         return addLine(button, text, null);
     }
 
+    /**
+     * Add a button with an action and no associated menu text.
+     *
+     * @param button the button
+     * @param action the action for the button
+     * @return this object
+     * @throws IOException if problems
+     */
     public ButtonActions addLine(Button button, Action action) throws IOException {
         return addLine(button, "", action);
     }
 
+    /**
+     * Add a button with an action and its associated menu text.
+     *
+     * @param button the button
+     * @param text the menu text
+     * @param action the action for the button
+     * @return this object
+     * @throws IOException if problems
+     */
     public ButtonActions addLine(Button button, String text, Action action) throws IOException {
         if (linecount >= MAXLINES) {
             throw new IOException("Too many menu lines added");
@@ -68,6 +112,11 @@ public class ButtonActions implements IRControlAction {
         return this;
     }
 
+    /**
+     * Get the formated menu for this set of button actions.
+     *
+     * @return the menu text
+     */
     public String text() {
         StringBuilder sb = new StringBuilder();
         sb.append(title);
@@ -85,6 +134,14 @@ public class ButtonActions implements IRControlAction {
         return sb.toString();
     }
 
+    /**
+     * Act on button. Undertake th explicit action if define for the button or
+     * the default action if defined.
+     *
+     * @param button the button
+     * @return true if action taken (either explicit or default)
+     * @throws IOException if problems
+     */
     @Override
     public boolean actionOnButton(Button button) throws IOException {
         Reporting.report("Screen", 3, "ButtonMenu processing command %s", button);

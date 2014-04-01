@@ -26,7 +26,8 @@ import linsdale.rpi.threadlib.MDThread;
 import linsdale.rpi.threadlib.Reporting;
 
 /**
- *
+ * The keyboard listening thread - looking for key presses.
+ * 
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class KeyboardListener extends MDThread<Command> {
@@ -48,14 +49,16 @@ public class KeyboardListener extends MDThread<Command> {
     };
     private Listener ticker;
     
-    public static KeyboardListener createAndStart() throws IOException {
+    /**
+     * Create and start the listening thread.
+     */
+    public static void createAndStart()  {
         KeyboardListener thread = new KeyboardListener();
         thread.start();
         thread.sendMessage(Command.START);
-        return thread;
     }
 
-    public KeyboardListener() {
+    private KeyboardListener() {
         super("KB Listener", Command.CLOSE);
         Reporting.registerControl("KB Listener", 'k');
     }

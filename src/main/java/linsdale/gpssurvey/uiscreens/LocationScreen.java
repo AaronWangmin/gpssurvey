@@ -35,6 +35,7 @@ import linsdale.rpi.screenlib.TextZone;
 import linsdale.rpi.screenlib.VariableLogBarWidget;
 
 /**
+ * Screen to display current location.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
@@ -74,6 +75,15 @@ public class LocationScreen extends Screen implements ScreenDataChangeProcessor 
     private final boolean displaycoordinates;
     private final boolean displaydepth;
 
+    /**
+     * Constructor.
+     *
+     * @param display the display device
+     * @param displaycoordinates if true then display position as relative
+     * coordinates, other display as latitude/longitude
+     * @param displaydepth if true display depth otherwise display altitude
+     * @throws IOException if problems
+     */
     public LocationScreen(SerialTFTDisplay display, boolean displaycoordinates, boolean displaydepth) throws IOException {
         super("location", display);
         this.displaycoordinates = displaycoordinates;
@@ -94,7 +104,7 @@ public class LocationScreen extends Screen implements ScreenDataChangeProcessor 
                 .setRight());
         addZone(depthlabel = new TextZone(display, depthlabelpos, labelwidthx1, Font.SIZE_7x14, CharSet.ISO_8859_1)
                 .setRight());
-        depthlabel.insert(displaydepth?"Depth: ":"Altitude: ");
+        depthlabel.insert(displaydepth ? "Depth: " : "Altitude: ");
         addZone(depth = new TextZone(display, depthpos, fieldwidthx1, Font.SIZE_7x14, CharSet.ISO_8859_1)
                 .setRight());
         addZone(hDOP = new TextZone(display, hDOPpos, hDOParea, Font.SIZE_6x12, CharSet.ISO_8859_1));
@@ -111,6 +121,12 @@ public class LocationScreen extends Screen implements ScreenDataChangeProcessor 
         dataChanged(Controller.getLocationData());
     }
 
+    /**
+     * Location Data change handler.
+     *
+     * @param ld the updated location data.
+     * @throws IOException if problems
+     */
     @Override
     public void dataChanged(LocationData ld) throws IOException {
         Location l = ld.getLocation();

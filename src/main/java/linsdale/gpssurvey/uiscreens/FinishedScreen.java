@@ -22,18 +22,31 @@ import linsdale.rpi.screenlib.Screen;
 import linsdale.rpi.screenlib.SerialTFTDisplay;
 
 /**
+ * Application Finished Screen.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class FinishedScreen extends Screen {
 
-     private final GPSLogoZone logo;
+    private final GPSLogoZone logo;
 
+    /**
+     * Constructor.
+     *
+     * @param display the display device
+     * @throws IOException if problems
+     */
     public FinishedScreen(SerialTFTDisplay display) throws IOException {
         super("finished", display);
         addZone(logo = new GPSLogoZone(display, ""));
     }
 
+    /**
+     * Set user message text for this screen.
+     *
+     * @param message user message text
+     * @throws IOException if problems
+     */
     public void setMessage(String message) throws IOException {
         logo.setMessage(message);
     }

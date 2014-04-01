@@ -31,7 +31,8 @@ import linsdale.rpi.screenlib.SerialTFTDisplay.Font;
 import linsdale.rpi.screenlib.TextZone;
 
 /**
- *
+ * Screen to display course and distance from previously recorded point.
+ * 
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class PointDisplay2Screen extends Screen implements ScreenDataChangeProcessor {
@@ -44,6 +45,12 @@ public class PointDisplay2Screen extends Screen implements ScreenDataChangeProce
     private final TextZone pointinformation;
     private final static PixelPosition pointinformationpos = new PixelPosition(0, 44);
 
+    /**
+     * Constructor.
+     * 
+     * @param display the display device
+     * @throws IOException if problems
+     */
     public PointDisplay2Screen(SerialTFTDisplay display) throws IOException {
         super("position2", display);
         addZone(header = new TextZone(display, headerpos, fullwidthx3, Font.SIZE_7x14, CharSet.ISO_8859_1)
@@ -58,6 +65,12 @@ public class PointDisplay2Screen extends Screen implements ScreenDataChangeProce
         dataChanged(Controller.getLocationData());
     }
 
+    /**
+     * Location Data change handler.
+     * 
+     * @param ld new location data
+     * @throws IOException if problems
+     */
     @Override
     public void dataChanged(LocationData ld) throws IOException {
         int pointcount = ld.getPointsSize();

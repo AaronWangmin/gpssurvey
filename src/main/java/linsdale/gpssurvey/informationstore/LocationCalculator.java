@@ -21,15 +21,25 @@ import linsdale.gpssurvey.gpsreader.GPSMessageConsolidator.ConsolidatedGPSData;
 import linsdale.gpssurvey.informationstore.LocationData.Location;
 
 /**
+ * The Calculator for Location Data.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class LocationCalculator {
 
-
+    /**
+     * Constructor
+     */
     public LocationCalculator() {
     }
-    
+
+    /**
+     * Update depth data in location data.
+     *
+     * @param ld the location data
+     * @param depthdata the depth data to use for updating
+     * @return true if location data is updated
+     */
     public boolean depthDataPoint(LocationData ld, Depth depthdata) {
         Location l = ld.getLocation();
         if (l != null) {
@@ -41,18 +51,24 @@ public class LocationCalculator {
         }
         return false;
     }
-    
+
+    /**
+     * Update GPS data in location data.
+     *
+     * @param ld the location data
+     * @param gpsdata the gps data to be used for updating
+     * @return true if location data is updated
+     */
     public boolean gpsDataPoint(LocationData ld, ConsolidatedGPSData gpsdata) {
         Location l = ld.getLocation();
         if (l != null) {
             l = l.clone();
         }
         ld.setLocation(gpsdata);
-        if (l == null ) {
+        if (l == null) {
             return true; // if first time location then obvious this is update
-        } 
+        }
         Location lnew = ld.getLocation();
         return !(l.getPosition().equals(lnew.getPosition()) && l.getAltitude().equals(lnew.getAltitude()));
     }
-
 }

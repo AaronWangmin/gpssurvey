@@ -27,7 +27,8 @@ import linsdale.rpi.threadlib.MDThread;
 import linsdale.rpi.threadlib.Reporting;
 
 /**
- *
+ * The manual Depth Listener.
+ * 
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class ManualDepthListener extends MDThread<Command> {
@@ -38,14 +39,16 @@ public class ManualDepthListener extends MDThread<Command> {
     private boolean operational = false;
     private static final int TICKINTERVAL = 1000;
 
-    public static ManualDepthListener createAndStart() throws IOException {
+    /**
+     * Create the manual DepthListener Thread and start it.
+     */
+    public static void createAndStart()  {
         ManualDepthListener thread = new ManualDepthListener();
         thread.start();
         thread.sendMessage(Command.START);
-        return thread;
     }
     
-    public ManualDepthListener() {
+    private ManualDepthListener() {
         super("Manual Depth Listener", Command.CLOSE);
         Reporting.registerControl("Manual Depth Listener", 'm');
     }
@@ -94,7 +97,7 @@ public class ManualDepthListener extends MDThread<Command> {
         MDTService.sendMessage("Controller", Command.DEPTHINFO, msg);
     }
 
-    public class Ticker extends TimerTask {
+    private class Ticker extends TimerTask {
 
         @Override
         public void run() {

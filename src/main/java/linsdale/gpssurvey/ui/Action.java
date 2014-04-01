@@ -19,10 +19,16 @@ package linsdale.gpssurvey.ui;
 import java.io.IOException;
 
 /**
+ * Basic Action interface.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public interface Action {
 
+    /**
+     * Execute action.
+     *
+     * @throws IOException if problem
+     */
     public void execute() throws IOException;
 }

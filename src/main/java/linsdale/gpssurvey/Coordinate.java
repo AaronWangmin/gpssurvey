@@ -19,17 +19,28 @@ package linsdale.gpssurvey;
 import java.util.Objects;
 
 /**
- *
+ * A Coordinate class.  Represents a distances.
+ * 
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class Coordinate {
 
     private final double value;
 
+    /**
+     * Constructor.
+     * 
+     * @param value the coordinate value (in metres)
+     */
     public Coordinate(double value) {
         this.value = value;
     }
 
+    /**
+     * Get the coordinate value.
+     * 
+     * @return teh coordinate value (in metres)
+     */
     public double get() {
         return value;
     }
@@ -45,6 +56,12 @@ public class Coordinate {
         return String.format("%9.1f", value);
     }
     
+    /**
+     * Format the coordinate value as a String. The string representation includes the
+     * units symbol.
+     *
+     * @return the formated string
+     */
     public String toStringWithUnits() {
         return String.format("%9.1f m", value);
     }

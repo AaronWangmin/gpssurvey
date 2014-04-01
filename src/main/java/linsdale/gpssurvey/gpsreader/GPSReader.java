@@ -16,7 +16,6 @@
  */
 package linsdale.gpssurvey.gpsreader;
 
-import java.io.IOException;
 import java.io.InputStream;
 import linsdale.gpssurvey.GPSSportsInformationRecorder.Command;
 import linsdale.rpi.threadlib.MDThread;
@@ -24,7 +23,8 @@ import linsdale.rpi.threadlib.Reporting;
 import net.sf.marineapi.nmea.io.SentenceReader;
 
 /**
- *
+ * The GPS reader class.
+ * 
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class GPSReader extends MDThread<Command> {
@@ -32,14 +32,18 @@ public class GPSReader extends MDThread<Command> {
     private final SentenceReader reader;
     private boolean running = false;
 
-    public static GPSReader createAndStart(InputStream gpsIn) throws IOException {
+    /**
+     * Create the GPS reader thread and start it.
+     * 
+     * @param gpsIn the input stream for reading GPS sentences
+     */
+    public static void createAndStart(InputStream gpsIn) {
         GPSReader thread = new GPSReader(gpsIn);
         thread.start();
         thread.sendMessage(Command.START);
-        return thread;
     }
 
-    public GPSReader(InputStream gpsIn) {
+    private GPSReader(InputStream gpsIn) {
         super("GPS Reader", Command.CLOSE);
         reader = new SentenceReader(gpsIn);
         reader.addSentenceListener(new GPSSentenceListener());

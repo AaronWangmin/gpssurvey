@@ -27,6 +27,7 @@ import net.sf.marineapi.nmea.sentence.Sentence;
 import net.sf.marineapi.nmea.sentence.VHWSentence;
 
 /**
+ * The Sentence Listener for the DepthFinder.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
@@ -34,6 +35,11 @@ public class DepthFinderSentenceListener implements SentenceListener {
 
     private final DepthFinderMessageConsolidator messageconsolidator = new DepthFinderMessageConsolidator();
 
+    /**
+     * Listener is called on every sentence read.
+     *
+     * @param event the sentence event
+     */
     @Override
     public void sentenceRead(SentenceEvent event) {
         try {
@@ -50,14 +56,23 @@ public class DepthFinderSentenceListener implements SentenceListener {
         }
     }
 
+    /**
+     * called when reader is paused
+     */
     @Override
     public void readingPaused() {
     }
 
+    /**
+     * called when reader is started
+     */
     @Override
     public void readingStarted() {
     }
 
+    /**
+     * called when reader is stopped
+     */
     @Override
     public void readingStopped() {
     }

@@ -48,6 +48,7 @@ import linsdale.rpi.threadlib.MDTService;
 import linsdale.rpi.threadlib.MDTService.Exitcode;
 
 /**
+ * The View Manager.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
@@ -55,6 +56,18 @@ public class View {
 
     private FinishedScreen finishedscreen;
 
+    /**
+     * Constructor. Creates all this screens, screenset and other artifacts
+     * needed for the views displayed.
+     *
+     * @param screenOut the display device output stream
+     * @param screenIn the display device input stream
+     * @param displaycoordinates if true display position as x,y coordinates
+     * otherwise display as latitude/longtitude
+     * @param displaydepth if true display depth else display altitude
+     * @param displayknots if true display speed in knots otherwise display as
+     * metres/sec
+     */
     public View(FileOutputStream screenOut, FileInputStream screenIn,
             boolean displaycoordinates, boolean displaydepth, boolean displayknots) {
         try {
@@ -89,31 +102,61 @@ public class View {
             MDTService.reportExceptionAndExit(e, Exitcode.EXIT_PROGFAIL);
         }
     }
-    
+
+    /**
+     * Display the power down screen.
+     *
+     * @throws IOException if problems
+     */
     public synchronized void displayPowerDown() throws IOException {
         ScreenManager.switchScreenSet("finish", 1); // get the finished screen
         finishedscreen.setMessage("powering down...");
         finishedscreen.paint();
     }
 
+    /**
+     * Display the power down selection screen.
+     *
+     * @throws IOException if problems
+     */
     public synchronized void displayPowerDownSelection() throws IOException {
         if (!"finish".equals(ScreenManager.getCurrentScreenSetId())) {
             ScreenManager.switchScreenSet("finish");
         }
     }
 
+    /**
+     * Process a button based on current screen context.
+     *
+     * The processing order is:
+     *
+     * The screen may have it's own button actions defined
+     *
+     * The screen set may have it's own button actions defined
+     *
+     * if manual depth setting is being used, then up and down button are
+     * handled to increment or decrement the depth.
+     *
+     * @param button the button
+     * @param useManualDepth true if manual depth setting is being used
+     * @throws IOException if problems
+     */
     public synchronized void processButtonInScreenContext(Button button, boolean useManualDepth) throws IOException {
         // let the screen handle any buttons it knows about
         Screen currentScreen = ScreenManager.getScreen();
         if (currentScreen instanceof IRControlAction) {
-            if (((IRControlAction) currentScreen).actionOnButton(button)) { return;}
-                
+            if (((IRControlAction) currentScreen).actionOnButton(button)) {
+                return;
+            }
+
         }
         // now let the common actions for a screen set be processed
         ScreenSet currentScreenSet = ScreenManager.getScreenSet();
         ButtonActions actions = (ButtonActions) currentScreenSet.getActions();
         if (actions != null) {
-            if (actions.actionOnButton(button)) { return;}
+            if (actions.actionOnButton(button)) {
+                return;
+            }
         }
         // finally handle up / down if manual depth handling
         if (useManualDepth) {
@@ -128,6 +171,13 @@ public class View {
         }
     }
 
+    /**
+     * Process a change in location data.
+     *
+     * If the current screen displays location data, then it will be updated.
+     *
+     * @throws IOException if problems
+     */
     public synchronized void dataChanged() throws IOException {
         Screen currentScreen = ScreenManager.getScreen();
         if (currentScreen instanceof ScreenDataChangeProcessor) {
@@ -135,6 +185,13 @@ public class View {
         }
     }
 
+    /**
+     * Display the next screen in the set and then shut down the application.
+     *
+     * @param exitcode the desired exitcode
+     * @param message the message to be passed to the next screen.
+     * @throws IOException if problems
+     */
     public synchronized static void displayNextScreenAndExit(Exitcode exitcode, String message) throws IOException {
         Screen nextScreen = ScreenManager.getScreenSet().next();
         if (nextScreen instanceof FinishedScreen) {
@@ -144,22 +201,48 @@ public class View {
         MDTService.fireShutdownHandler(exitcode);
     }
 
+    /**
+     * Display the next screen in the screen set.
+     *
+     * @throws IOException if problems
+     */
     public synchronized static void displayNextScreen() throws IOException {
         ScreenManager.getScreenSet().next();
     }
 
+    /**
+     * Display the previous screen in the screen set.
+     *
+     * @throws IOException if problems
+     */
     public synchronized static void displayPreviousScreen() throws IOException {
         ScreenManager.getScreenSet().previous();
     }
 
+    /**
+     * Display the previous screen set.
+     *
+     * @throws IOException if problems
+     */
     public synchronized static void displayPreviousScreenSet() throws IOException {
         ScreenManager.popScreenSet();
     }
 
+    /**
+     * Display a new Screenset.
+     *
+     * @param name the screen set name
+     * @throws IOException if problems
+     */
     public synchronized static void displayNewScreenSet(String name) throws IOException {
         ScreenManager.switchScreenSet(name);
     }
 
+    /**
+     * Repaint screen.
+     *
+     * @throws IOException if problems
+     */
     public synchronized static void displayRepaint() throws IOException {
         ScreenManager.getScreen().paint();
     }

@@ -25,6 +25,7 @@ import linsdale.rpi.screenlib.SerialTFTDisplay;
 import linsdale.rpi.screenlib.TextZone;
 
 /**
+ * A Menu screen.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
@@ -35,13 +36,28 @@ public class SelectUsingButtonScreen extends Screen implements IRControlAction {
     private final static HybridArea dsize = new HybridArea(160, 10);
     private final ButtonActions menu;
 
+    /**
+     * Constructor.
+     *
+     * @param screenId the screen name
+     * @param display the display device
+     * @param menu the menu definition (text/buttons/actions)
+     * @throws IOException if problems
+     */
     public SelectUsingButtonScreen(String screenId, SerialTFTDisplay display, ButtonActions menu) throws IOException {
         super(screenId, display);
         this.menu = menu;
-        addZone(description = new TextZone(display, dpos, dsize, SerialTFTDisplay.Font.SIZE_6x12, SerialTFTDisplay.CharSet.ISO_8859_1,0, 4));
+        addZone(description = new TextZone(display, dpos, dsize, SerialTFTDisplay.Font.SIZE_6x12, SerialTFTDisplay.CharSet.ISO_8859_1, 0, 4));
         description.insert(menu.text());
     }
 
+    /**
+     * Called on button press.
+     *
+     * @param button the button
+     * @return true if action taken (explicit or default)
+     * @throws IOException if problems
+     */
     @Override
     public boolean actionOnButton(Button button) throws IOException {
         return menu.actionOnButton(button);

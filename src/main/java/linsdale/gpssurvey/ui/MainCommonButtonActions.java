@@ -21,11 +21,20 @@ import linsdale.gpssurvey.informationstore.Controller;
 import linsdale.gpssurvey.input.IRControlAction.Button;
 
 /**
+ * Definitions of the main button actions used in the application.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
 public class MainCommonButtonActions {
 
+    /**
+     * Get the Button actions definition.
+     *
+     * Defines common actions for buttons A, B, C, Left and Right.
+     *
+     * @return the button actions
+     * @throws IOException if problems.
+     */
     public static ButtonActions getActions() throws IOException {
         return new ButtonActions()
                 .addLine(Button.A, new RecordPositionAction())
@@ -35,40 +44,81 @@ public class MainCommonButtonActions {
                 .addLine(Button.RIGHT, new ButtonRightHandler());
     }
 
+    /**
+     * Record this point. The Action associated with button A.
+     */
     public static class RecordPositionAction implements Action {
 
+        /**
+         * Action - Record this point.
+         *
+         * @throws IOException if problems
+         */
         @Override
         public void execute() throws IOException {
             Controller.recordPoint();
         }
     }
 
+    /**
+     * Start / Stop record (track) recording. The Action associated with button
+     * B.
+     */
     public static class ButtonBHandler implements Action {
 
+        /**
+         * Action - Start / Stop record (track) recording
+         *
+         * @throws IOException if problems
+         */
         @Override
         public void execute() throws IOException {
             Controller.startStopRecording();
         }
     }
 
+    /**
+     * Cancel record (track) recording. The Action associated with button C.
+     */
     public static class ButtonCHandler implements Action {
 
+        /**
+         * Action - Cancel record (track) recording
+         *
+         * @throws IOException if problems
+         */
         @Override
         public void execute() throws IOException {
             Controller.cancelRecording();
         }
     }
-    
+
+    /**
+     * Move to previous Screen. The Action associated with Left button.
+     */
     public static class ButtonLeftHandler implements Action {
 
+        /**
+         * Action - Move to previous Screen
+         *
+         * @throws IOException if problem
+         */
         @Override
         public void execute() throws IOException {
             View.displayPreviousScreen();
         }
     }
-    
+
+    /**
+     * Move to next Screen. The Action associated with the Right button.
+     */
     public static class ButtonRightHandler implements Action {
 
+        /**
+         * Action - Move to next Screen
+         *
+         * @throws IOException if problem
+         */
         @Override
         public void execute() throws IOException {
             View.displayNextScreen();

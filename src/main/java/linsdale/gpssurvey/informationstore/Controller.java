@@ -38,6 +38,7 @@ import linsdale.rpi.threadlib.MDThread;
 import linsdale.rpi.threadlib.Reporting;
 
 /**
+ * The Controller class for the application.
  *
  * @author Richard Linsdale (richard.linsdale at blueyonder.co.uk)
  */
@@ -50,6 +51,21 @@ public class Controller extends MDThread<Command> {
     private static View view;
     private final boolean useManualDepth;
 
+    /**
+     * Constructor.
+     *
+     * @param gpsIn the GPS device inputstream
+     * @param screenOut the display device outputstream
+     * @param screenIn the display device inputstream
+     * @param depthfinderIn the depthfinder device inputstream
+     * @param useKeyboardInput true if keyboard input is to be used
+     * @param coordinates true if positions are to be displayed as x,y
+     * coordinates, other latitude/longitude format will be used.
+     * @param displayDepth true is depth is to be displayed, other altitude will
+     * be shown
+     * @param knots true if speed is to be displayed in knots, other metres/sec
+     * will be used
+     */
     public Controller(FileInputStream gpsIn, FileOutputStream screenOut, FileInputStream screenIn, FileInputStream depthfinderIn,
             boolean useKeyboardInput, boolean coordinates, boolean displayDepth, boolean knots) {
         super("Controller", Command.CLOSE, 6);
@@ -130,24 +146,47 @@ public class Controller extends MDThread<Command> {
         }
     }
 
+    /**
+     * Get information about current location.
+     *
+     * @return the location information
+     */
     public static final LocationData getLocationData() {
         return information;
     }
 
+    /**
+     * Start the Reference Location calculation.
+     */
     public static final void obtainReferenceLocation() {
         refCalc.start();
     }
 
+    /**
+     * Record the current Position on storage.
+     *
+     * @throws IOException if problems
+     */
     public static final void recordPoint() throws IOException {
         recorder.recordPoint(information);
         view.dataChanged();
     }
 
+    /**
+     * Start or Stop the current recording of a track, saving data if necessary.
+     *
+     * @throws IOException if problems
+     */
     public static final void startStopRecording() throws IOException {
         recorder.startStopRecording(information);
         view.dataChanged();
     }
 
+    /**
+     * Cancel current recording of track and abandon data.
+     *
+     * @throws IOException if problems
+     */
     public static final void cancelRecording() throws IOException {
         recorder.cancelRecording(information);
         view.dataChanged();
