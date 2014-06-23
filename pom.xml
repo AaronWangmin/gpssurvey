@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>linsdale.gpssurvey</groupId>
+    <groupId>uk.org.rlinsdale.gpssurvey</groupId>
     <artifactId>GPS-Survey</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>GPS-Survey</name>
+    <repositories>
+        <repository>
+            <id>rlinsdale</id>
+            <name>Richard-Linsdale</name>
+            <url>http://repository.rlinsdale.org.uk</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
     <dependencies>
         <dependency>
-            <groupId>linsdale.rpi</groupId>
+            <groupId>uk.org.rlinsdale.rpi</groupId>
             <artifactId>ScreenLib</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <artifactId>ThreadLib</artifactId>
-            <groupId>linsdale.rpi</groupId>
+            <groupId>uk.org.rlinsdale.rpi</groupId>
             <type>jar</type>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0</version>
         </dependency>
         <dependency>
             <groupId>net.sf.marineapi</groupId>
