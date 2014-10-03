@@ -21,8 +21,8 @@ import uk.org.rlinsdale.gpssurvey.ui.Action;
 import uk.org.rlinsdale.gpssurvey.ui.ButtonActions;
 import uk.org.rlinsdale.gpssurvey.ui.SelectUsingButtonScreen;
 import uk.org.rlinsdale.gpssurvey.ui.View;
-import uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplay;
-import uk.org.rlinsdale.rpi.threadlib.MDTService.Exitcode;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplay;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.MDTService.Exitcode;
 
 /**
  * The Power down options screen - allows choice of exitcode or cancel.

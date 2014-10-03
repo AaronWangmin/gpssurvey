@@ -22,7 +22,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import uk.org.rlinsdale.gpssurvey.informationstore.Recorder.RecordWriterCommand;
-import uk.org.rlinsdale.rpi.threadlib.MDThread;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.MDThread;
 
 /**
  * The Recorder for Record (track) files.

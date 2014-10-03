@@ -19,8 +19,8 @@ package uk.org.rlinsdale.gpssurvey.uiscreens;
 import uk.org.rlinsdale.gpssurvey.ui.GPSLogoZone;
 import java.io.IOException;
 import uk.org.rlinsdale.gpssurvey.ui.View;
-import uk.org.rlinsdale.rpi.screenlib.ScreenWithTick;
-import uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplay;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.ScreenWithTick;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplay;
 
 /**
  * The opening splash screen.

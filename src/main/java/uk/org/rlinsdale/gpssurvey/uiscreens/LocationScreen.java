@@ -22,17 +22,17 @@ import uk.org.rlinsdale.gpssurvey.informationstore.Controller;
 import uk.org.rlinsdale.gpssurvey.informationstore.LocationData;
 import uk.org.rlinsdale.gpssurvey.informationstore.LocationData.Location;
 import uk.org.rlinsdale.gpssurvey.ui.ScreenDataChangeProcessor;
-import uk.org.rlinsdale.rpi.screenlib.CharacterArea;
-import uk.org.rlinsdale.rpi.screenlib.HybridArea;
-import uk.org.rlinsdale.rpi.screenlib.PixelArea;
-import uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplay;
-import uk.org.rlinsdale.rpi.screenlib.PixelPosition;
-import uk.org.rlinsdale.rpi.screenlib.Screen;
-import uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplay.CharSet;
-import uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplay.Colour;
-import uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplay.Font;
-import uk.org.rlinsdale.rpi.screenlib.TextZone;
-import uk.org.rlinsdale.rpi.screenlib.VariableLogBarWidget;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.CharacterArea;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.HybridArea;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.PixelArea;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplay;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.PixelPosition;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.Screen;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplay.CharSet;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplay.Colour;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplay.Font;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.TextZone;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.VariableLogBarWidget;
 
 /**
  * Screen to display current location.

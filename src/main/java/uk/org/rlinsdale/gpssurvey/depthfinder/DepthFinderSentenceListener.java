@@ -17,8 +17,8 @@
 package uk.org.rlinsdale.gpssurvey.depthfinder;
 
 import java.io.IOException;
-import uk.org.rlinsdale.rpi.threadlib.MDTService;
-import uk.org.rlinsdale.rpi.threadlib.MDTService.Exitcode;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.MDTService;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.MDTService.Exitcode;
 import net.sf.marineapi.nmea.event.SentenceEvent;
 import net.sf.marineapi.nmea.event.SentenceListener;
 import net.sf.marineapi.nmea.sentence.DPTSentence;

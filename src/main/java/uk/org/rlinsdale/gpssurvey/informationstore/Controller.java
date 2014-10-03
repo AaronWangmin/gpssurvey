@@ -31,11 +31,11 @@ import uk.org.rlinsdale.gpssurvey.input.IRControlAction.Button;
 import uk.org.rlinsdale.gpssurvey.input.IrListener;
 import uk.org.rlinsdale.gpssurvey.input.KeyboardListener;
 import uk.org.rlinsdale.gpssurvey.ui.View;
-import uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplayOutputThread;
-import uk.org.rlinsdale.rpi.threadlib.MDTService;
-import uk.org.rlinsdale.rpi.threadlib.MDTService.Exitcode;
-import uk.org.rlinsdale.rpi.threadlib.MDThread;
-import uk.org.rlinsdale.rpi.threadlib.Reporting;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplayOutputThread;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.MDTService;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.MDTService.Exitcode;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.MDThread;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.Reporting;
 
 /**
  * The Controller class for the application.

@@ -19,7 +19,7 @@ package uk.org.rlinsdale.gpssurvey.informationstore;
 import java.io.IOException;
 import java.io.PrintWriter;
 import uk.org.rlinsdale.gpssurvey.informationstore.Recorder.SessionWriterCommand;
-import uk.org.rlinsdale.rpi.threadlib.MDThread;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.MDThread;
 
 /**
  * The Recorder for Session files.

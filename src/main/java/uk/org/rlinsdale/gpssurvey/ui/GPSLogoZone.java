@@ -17,14 +17,14 @@
 package uk.org.rlinsdale.gpssurvey.ui;
 
 import java.io.IOException;
-import uk.org.rlinsdale.rpi.screenlib.HybridArea;
-import uk.org.rlinsdale.rpi.screenlib.PixelPosition;
-import uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplay;
-import uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplay.CharSet;
-import uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplay.Colour;
-import uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplay.Font;
-import uk.org.rlinsdale.rpi.screenlib.TextZone;
-import uk.org.rlinsdale.rpi.screenlib.Zone;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.HybridArea;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.PixelPosition;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplay;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplay.CharSet;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplay.Colour;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplay.Font;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.TextZone;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.Zone;
 
 /**
  * A Screen Zone which draws the application logo screen with optional appended

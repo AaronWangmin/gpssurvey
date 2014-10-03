@@ -22,8 +22,8 @@ import uk.org.rlinsdale.gpssurvey.informationstore.LocationData;
 import uk.org.rlinsdale.gpssurvey.ui.ScreenDataChangeProcessor;
 import uk.org.rlinsdale.gpssurvey.ui.View;
 import uk.org.rlinsdale.gpssurvey.ui.WaitingForZone;
-import uk.org.rlinsdale.rpi.screenlib.ScreenWithTick;
-import uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplay;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.ScreenWithTick;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplay;
 
 /**
  * Screen to be displayed will waiting for reference location data to be

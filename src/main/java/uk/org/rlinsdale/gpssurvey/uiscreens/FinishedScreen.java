@@ -18,8 +18,8 @@ package uk.org.rlinsdale.gpssurvey.uiscreens;
 
 import java.io.IOException;
 import uk.org.rlinsdale.gpssurvey.ui.GPSLogoZone;
-import uk.org.rlinsdale.rpi.screenlib.Screen;
-import uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplay;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.Screen;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplay;
 
 /**
  * Application Finished Screen.

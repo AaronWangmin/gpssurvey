@@ -20,8 +20,8 @@ import uk.org.rlinsdale.gpssurvey.ui.WaitingForZone;
 import java.io.IOException;
 import uk.org.rlinsdale.gpssurvey.informationstore.Controller;
 import uk.org.rlinsdale.gpssurvey.ui.View;
-import uk.org.rlinsdale.rpi.screenlib.ScreenWithTick;
-import uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplay;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.ScreenWithTick;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplay;
 
 /**
  * Screen to display while waiting for GPS device to lock on.

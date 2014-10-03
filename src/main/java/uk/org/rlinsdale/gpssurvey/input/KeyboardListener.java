@@ -20,10 +20,10 @@ import java.io.IOException;
 import java.util.TimerTask;
 import uk.org.rlinsdale.gpssurvey.GPSSportsInformationRecorder.Command;
 import uk.org.rlinsdale.gpssurvey.input.IRControlAction.Button;
-import uk.org.rlinsdale.rpi.threadlib.MDTService;
-import uk.org.rlinsdale.rpi.threadlib.MDTService.Exitcode;
-import uk.org.rlinsdale.rpi.threadlib.MDThread;
-import uk.org.rlinsdale.rpi.threadlib.Reporting;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.MDTService;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.MDTService.Exitcode;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.MDThread;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.Reporting;
 
 /**
  * The keyboard listening thread - looking for key presses.

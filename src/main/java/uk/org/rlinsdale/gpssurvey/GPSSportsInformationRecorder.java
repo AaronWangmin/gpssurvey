@@ -20,8 +20,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import uk.org.rlinsdale.gpssurvey.informationstore.Controller;
-import uk.org.rlinsdale.rpi.threadlib.MDTService.Exitcode;
-import uk.org.rlinsdale.rpi.threadlib.Reporting;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.MDTService.Exitcode;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.Reporting;
 
 /**
  *

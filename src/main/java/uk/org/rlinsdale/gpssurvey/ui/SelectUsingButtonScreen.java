@@ -18,11 +18,11 @@ package uk.org.rlinsdale.gpssurvey.ui;
 
 import java.io.IOException;
 import uk.org.rlinsdale.gpssurvey.input.IRControlAction;
-import uk.org.rlinsdale.rpi.screenlib.HybridArea;
-import uk.org.rlinsdale.rpi.screenlib.PixelPosition;
-import uk.org.rlinsdale.rpi.screenlib.Screen;
-import uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplay;
-import uk.org.rlinsdale.rpi.screenlib.TextZone;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.HybridArea;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.PixelPosition;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.Screen;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplay;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.TextZone;
 
 /**
  * A Menu screen.

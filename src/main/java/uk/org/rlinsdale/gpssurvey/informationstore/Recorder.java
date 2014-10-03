@@ -20,8 +20,8 @@ import java.io.File;
 import java.io.IOException;
 import uk.org.rlinsdale.gpssurvey.Position;
 import uk.org.rlinsdale.gpssurvey.informationstore.LocationData.Location;
-import uk.org.rlinsdale.rpi.threadlib.MDTService;
-import uk.org.rlinsdale.rpi.threadlib.Reporting;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.MDTService;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.Reporting;
 
 /**
  * The Recorder class. Provides the data management associated with the

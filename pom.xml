@@ -1,32 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>uk.org.rlinsdale.gpssurvey</groupId>
-    <artifactId>GPS-Survey</artifactId>
+    
+    <properties>
+        <ghpagesroot>gpssurvey</ghpagesroot>
+        <release>1</release>
+    </properties>
+    
+    <parent>
+        <groupId>uk.org.rlinsdale.poms</groupId>
+        <artifactId>java-application</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    
+    <groupId>uk.org.rlinsdale</groupId>
+    <artifactId>gpssurvey</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-    <name>GPS-Survey</name>
-    <repositories>
-        <repository>
-            <id>rlinsdale</id>
-            <name>Richard-Linsdale</name>
-            <url>http://repository.rlinsdale.org.uk</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+    <name>GPS Survey</name>
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>uk.org.rlinsdale</groupId>
+                <artifactId>rpiembeddedlibrary</artifactId>
+                <version>1.0.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <dependencies>
         <dependency>
-            <groupId>uk.org.rlinsdale.rpi</groupId>
-            <artifactId>ScreenLib</artifactId>
-            <version>1.0.0</version>
+            <groupId>uk.org.rlinsdale.rpiembeddedlibrary</groupId>
+            <artifactId>screen</artifactId>
         </dependency>
         <dependency>
-            <artifactId>ThreadLib</artifactId>
-            <groupId>uk.org.rlinsdale.rpi</groupId>
-            <type>jar</type>
-            <version>1.0.0</version>
+            <artifactId>thread</artifactId>
+            <groupId>uk.org.rlinsdale.rpiembeddedlibrary</groupId>
         </dependency>
         <dependency>
             <groupId>net.sf.marineapi</groupId>
@@ -39,9 +50,4 @@
             <version>0.0.5</version>
         </dependency>
     </dependencies>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
 </project>

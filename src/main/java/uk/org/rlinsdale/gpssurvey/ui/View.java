@@ -36,16 +36,16 @@ import uk.org.rlinsdale.gpssurvey.uiscreens.ReferenceLocationScreen;
 import uk.org.rlinsdale.gpssurvey.uiscreens.SelectPowerDownOptionScreen;
 import uk.org.rlinsdale.gpssurvey.uiscreens.SplashScreen;
 import uk.org.rlinsdale.gpssurvey.uiscreens.WaitingForGPSScreen;
-import uk.org.rlinsdale.rpi.screenlib.Screen;
-import uk.org.rlinsdale.rpi.screenlib.ScreenManager;
-import uk.org.rlinsdale.rpi.screenlib.ScreenSet;
-import uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplay;
-import uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplay.Colour;
-import static uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplay.FULLBRIGHTNESS;
-import uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplay.Orientation;
-import uk.org.rlinsdale.rpi.screenlib.SerialTFTDisplayUsingOutputThread;
-import uk.org.rlinsdale.rpi.threadlib.MDTService;
-import uk.org.rlinsdale.rpi.threadlib.MDTService.Exitcode;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.Screen;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.ScreenManager;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.ScreenSet;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplay;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplay.Colour;
+import static uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplay.FULLBRIGHTNESS;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplay.Orientation;
+import uk.org.rlinsdale.rpiembeddedlibrary.screen.SerialTFTDisplayUsingOutputThread;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.MDTService;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.MDTService.Exitcode;
 
 /**
  * The View Manager.

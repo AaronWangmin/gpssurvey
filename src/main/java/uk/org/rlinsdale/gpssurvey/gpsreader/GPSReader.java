@@ -18,8 +18,8 @@ package uk.org.rlinsdale.gpssurvey.gpsreader;
 
 import java.io.InputStream;
 import uk.org.rlinsdale.gpssurvey.GPSSportsInformationRecorder.Command;
-import uk.org.rlinsdale.rpi.threadlib.MDThread;
-import uk.org.rlinsdale.rpi.threadlib.Reporting;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.MDThread;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.Reporting;
 import net.sf.marineapi.nmea.io.SentenceReader;
 
 /**

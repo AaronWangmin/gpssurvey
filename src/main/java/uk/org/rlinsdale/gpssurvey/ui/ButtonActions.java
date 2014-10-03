@@ -19,7 +19,7 @@ package uk.org.rlinsdale.gpssurvey.ui;
 import java.io.IOException;
 import uk.org.rlinsdale.gpssurvey.input.IRControlAction;
 import uk.org.rlinsdale.gpssurvey.input.IRControlAction.Button;
-import uk.org.rlinsdale.rpi.threadlib.Reporting;
+import uk.org.rlinsdale.rpiembeddedlibrary.thread.Reporting;
 
 /**
  * The Button Actions class - allows definition of Actions associated with
