@@ -5,34 +5,29 @@
     <parent>
         <groupId>uk.org.rlinsdale.poms</groupId>
         <artifactId>java-application</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.3</version>
     </parent>
     
     <groupId>uk.org.rlinsdale</groupId>
     <artifactId>gpssurvey</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
     <name>GPS Survey</name>
     
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>uk.org.rlinsdale</groupId>
-                <artifactId>rpiembeddedlibrary</artifactId>
-                <version>1.0.0</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+    <properties>
+        <rpiembeddedlibrary.version>1.0.1</rpiembeddedlibrary.version>
+    </properties>
+    
     <dependencies>
         <dependency>
             <groupId>uk.org.rlinsdale.rpiembeddedlibrary</groupId>
             <artifactId>screen</artifactId>
+            <version>${rpiembeddedlibrary.version}</version>
         </dependency>
         <dependency>
             <artifactId>thread</artifactId>
             <groupId>uk.org.rlinsdale.rpiembeddedlibrary</groupId>
+            <version>${rpiembeddedlibrary.version}</version>
         </dependency>
         <dependency>
             <groupId>net.sf.marineapi</groupId>
