@@ -1,3 +1,8 @@
+{::comment define doc.title=GPS Survey Developer Documentation /}
+{::comment define doc.header= Developer Documentation /}
+{::comment define doc.name = GPS Survey /}
+{::comment define doc.menu.menu = [GPS Survey Home](index.html) /}
+
 This document refers to release v${project.version}
 
 As an open source solution, the source code

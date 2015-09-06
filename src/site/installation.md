@@ -1,3 +1,8 @@
+{::comment define doc.title=GPS Survey Installation Instructions /}
+{::comment define doc.header= Installation Instructions /}
+{::comment define doc.name = GPS Survey /}
+{::comment define doc.menu.menu = [GPS Survey Home](index.html) /}
+
 This document refers to release v${project.version}
 
 GPS Survey is provided as a jar file which can be downloaded

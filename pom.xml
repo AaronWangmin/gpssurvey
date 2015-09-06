@@ -15,6 +15,7 @@
     <name>GPS Survey</name>
     
     <properties>
+        <project_key>gpssurvey</project_key>
         <release>1</release>
         <ghpagesroot>gpssurvey</ghpagesroot>
         <mainclass>uk.org.rlinsdale.gpssurvey.GPSSportsInformationRecorder</mainclass>

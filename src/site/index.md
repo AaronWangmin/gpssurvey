@@ -1,3 +1,10 @@
+{::comment define doc.title=GPS Survey /}
+{::comment define doc.header= GPS Survey /}
+{::comment define doc.tagline=Lake survey using GPS and optional depth finder /}
+{::comment define doc.name = GPS Survey /}
+{::comment define doc.menu.menu = [Software and Embedded Solutions Home](http://richard-linsdale.github.io/) /}
+{::comment define status=In active development /}
+
 GPS Survey is an embedded application for a Raspberry Pi to survey a piece of water and record
 a series of position coordinates each with an asociated depth.
 
@@ -9,6 +16,8 @@ It is is a Java standalone application, and requires the Java
 8 runtime environment
           
 Current release is v${project.version}
+                         
+Project Status: ${status}
                 
 #####Documentation
 
