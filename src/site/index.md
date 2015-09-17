@@ -2,20 +2,20 @@
 {::comment define doc.header= GPS Survey /}
 {::comment define doc.tagline=Lake survey using GPS and optional depth finder /}
 {::comment define doc.name = GPS Survey /}
-{::comment define doc.menu.menu = [Software and Embedded Solutions Home](http://richard-linsdale.github.io/) /}
+{::comment define doc.menu.menu = [Software and Embedded Solutions Home](http://www.rlinsdale.org.uk/software/) /}
 {::comment define status=In active development /}
 
 GPS Survey is an embedded application for a Raspberry Pi to survey a piece of water and record
 a series of position coordinates each with an asociated depth.
 
 The Raspberry Pi hardware configuration includes a
-GPS module, optional depth finder, [IRPlate](http://richard-linsdale.github.io/irplate/) and
+GPS module, optional depth finder, [IRPlate](http://www.rlinsdale.org.uk/software/irplate/) and
 small tft screen. 
 
 It is is a Java standalone application, and requires the Java
 8 runtime environment
           
-Current release is v${project.version}
+Current release is v${project-version}
                          
 Project Status: ${status}
                 
