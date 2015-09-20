@@ -1,9 +1,9 @@
-{::comment define doc.title=GPS Survey /}
-{::comment define doc.header= GPS Survey /}
-{::comment define doc.tagline=Lake survey using GPS and optional depth finder /}
-{::comment define doc.name = GPS Survey /}
-{::comment define doc.menu.menu = [Software and Embedded Solutions Home](http://www.rlinsdale.org.uk/software/) /}
-{::comment define status=In active development /}
+{::comment} define doc.title=GPS Survey {:/comment}
+{::comment} define doc.header= GPS Survey {:/comment}
+{::comment} define doc.tagline=Lake survey using GPS and optional depth finder {:/comment}
+{::comment} define doc.name = GPS Survey {:/comment}
+{::comment} define doc.menu.menu = [Software and Embedded Solutions Home](http://www.rlinsdale.org.uk/software/) {:/comment}
+{::comment} define status=In active development {:/comment}
 
 GPS Survey is an embedded application for a Raspberry Pi to survey a piece of water and record
 a series of position coordinates each with an asociated depth.
@@ -19,14 +19,14 @@ Current release is v${project-version}
                          
 Project Status: ${status}
                 
-#####Documentation
+##Documentation
 
 * [Installation Instructions](installation.html)
 * [Release Notes](release.html)
 * [User Documentation](user.html)
 * [Developer Documentation](developer.html)
                 
-#####Support
+##Support
 
 The author would be interested in any feedback on this project
 from users of the plug-in.  Issues (bugs or possible
