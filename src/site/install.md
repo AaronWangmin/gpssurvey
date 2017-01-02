@@ -1,10 +1,3 @@
-{::comment} define doc.title=GPS Survey Installation Instructions {:/comment}
-{::comment} define doc.header= Installation Instructions {:/comment}
-{::comment} define doc.name = GPS Survey {:/comment}
-{::comment} define doc.menu.menu = [GPS Survey Home](index.html) {:/comment}
-
-This document refers to release v${project-version}
-
 GPS Survey is provided as a jar file which can be downloaded
 from [here](http://www.rlinsdale.org.uk/repository/uk/org/rlinsdale/gpssurvey/${project-version}/gpssurvey-${project-version}.jar).
 The jar file can be placed anywhere in the filesystem on your RPi machine.
