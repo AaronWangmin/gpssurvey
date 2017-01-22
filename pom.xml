@@ -3,32 +3,37 @@
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
-         <groupId>uk.org.rlinsdale.poms</groupId>
+         <groupId>uk.theretiredprogrammer.poms</groupId>
         <artifactId>java-application</artifactId>
-        <version>2.0.0</version>
+        <version>3.0.0-SNAPSHOT</version>
     </parent>
     
-    <groupId>uk.org.rlinsdale</groupId>
+    <groupId>uk.theretiredprogrammer</groupId>
     <artifactId>gpssurvey</artifactId>
-    <version>1.0.2</version>
+    <version>2.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>GPS Survey</name>
     
     <properties>
         <project_key>gpssurvey</project_key>
-        <mainclass>uk.org.rlinsdale.gpssurvey.GPSSportsInformationRecorder</mainclass>
-        <rpiembeddedlibrary.version>1.0.2</rpiembeddedlibrary.version>
+        <mainclass>uk.theretiredprogrammer.gpssurvey.GPSSportsInformationRecorder</mainclass>
+        <rpiembeddedlibrary.version>2.0.0-SNAPSHOT</rpiembeddedlibrary.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <licenseName>Apache 2.0</licenseName>
+        <licenseFile>LICENSE</licenseFile>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
     
     <dependencies>
         <dependency>
-            <groupId>uk.org.rlinsdale.rpiembeddedlibrary</groupId>
+            <groupId>uk.theretiredprogrammer.rpiembeddedlibrary</groupId>
             <artifactId>screen</artifactId>
             <version>${rpiembeddedlibrary.version}</version>
         </dependency>
         <dependency>
             <artifactId>thread</artifactId>
-            <groupId>uk.org.rlinsdale.rpiembeddedlibrary</groupId>
+            <groupId>uk.theretiredprogrammer.rpiembeddedlibrary</groupId>
             <version>${rpiembeddedlibrary.version}</version>
         </dependency>
         <dependency>
