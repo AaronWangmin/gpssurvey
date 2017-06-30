@@ -5,7 +5,7 @@
 [**Release Notes**](release.html)
 
 GPS Survey is provided as a jar file which can be downloaded
-[from Maven Central](http://central.maven.org/maven2/uk/theretiredprogrammer/gpssurvey/${project.version}/gpssuvey-${project.version}.jar).
+[from Maven Central](http://central.maven.org/maven2/uk/theretiredprogrammer/gpssurvey/2.0.0-SNAPSHOT/gpssuvey-2.0.0-SNAPSHOT.jar).
 The jar file can be placed anywhere in the filesystem on your RPi machine.
 
 The software requires Java 8 to run, so please ensure that the
@@ -17,5 +17,5 @@ at [this documentation](http://www.theretiredprogrammer.uk/commondocumentation/i
 To execute the solution the following command line should be given:
 
 ~~~ bash
-    java -jar gpssurvey-${project.version}.jar <command line options>
+    java -jar gpssurvey-2.0.0-SNAPSHOT.jar <command line options>
 ~~~

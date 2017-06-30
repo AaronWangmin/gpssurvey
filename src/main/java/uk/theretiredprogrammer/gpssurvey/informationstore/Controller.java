@@ -15,6 +15,7 @@
  */
 package uk.theretiredprogrammer.gpssurvey.informationstore;
 
+import com.pi4j.io.i2c.I2CFactory;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -43,9 +44,9 @@ import uk.theretiredprogrammer.rpiembeddedlibrary.thread.Reporting;
  */
 public class Controller extends MDThread<Command> {
 
-    private final static LocationData information = new LocationData();
+    private final static LocationData INFORMATION = new LocationData();
     private final LocationCalculator locCalc = new LocationCalculator();
-    private final static ReferencePointCalculator refCalc = new ReferencePointCalculator();
+    private final static ReferencePointCalculator REFCALC = new ReferencePointCalculator();
     private static Recorder recorder;
     private static View view;
     private final boolean useManualDepth;
@@ -92,7 +93,7 @@ public class Controller extends MDThread<Command> {
             } else {
                 IrListener.createAndStart();
             }
-        } catch (IOException e) {
+        } catch (IOException | I2CFactory.UnsupportedBusNumberException e) {
             MDTService.reportExceptionAndExit(e, Exitcode.EXIT_PROGFAIL);
         }
     }
@@ -106,25 +107,25 @@ public class Controller extends MDThread<Command> {
                 break;
             case DEPTHINFO:
                 Depth depthdata = ((ConsolidatedDepthFinderData) commandParameters).depth;
-                if (locCalc.depthDataPoint(information, depthdata)) {
-                    recorder.locationChanged(information);
+                if (locCalc.depthDataPoint(INFORMATION, depthdata)) {
+                    recorder.locationChanged(INFORMATION);
                     view.dataChanged();
                 }
-                if ((ref = refCalc.depthDataPoint(depthdata)) != null) {
-                    information.setReferenceLocation(ref);
-                    recorder.recordReferenceLocation(information);
+                if ((ref = REFCALC.depthDataPoint(depthdata)) != null) {
+                    INFORMATION.setReferenceLocation(ref);
+                    recorder.recordReferenceLocation(INFORMATION);
                     view.dataChanged();
                 }
                 break;
             case GPSINFO:
                 ConsolidatedGPSData gpsdata = (ConsolidatedGPSData) commandParameters;
-                if (locCalc.gpsDataPoint(information, gpsdata)) {
-                    recorder.locationChanged(information);
+                if (locCalc.gpsDataPoint(INFORMATION, gpsdata)) {
+                    recorder.locationChanged(INFORMATION);
                     view.dataChanged();
                 }
-                if ((ref = refCalc.gpsDataPoint(gpsdata)) != null) {
-                    information.setReferenceLocation(ref);
-                    recorder.recordReferenceLocation(information);
+                if ((ref = REFCALC.gpsDataPoint(gpsdata)) != null) {
+                    INFORMATION.setReferenceLocation(ref);
+                    recorder.recordReferenceLocation(INFORMATION);
                     view.dataChanged();
                 }
                 break;
@@ -151,14 +152,14 @@ public class Controller extends MDThread<Command> {
      * @return the location information
      */
     public static final LocationData getLocationData() {
-        return information;
+        return INFORMATION;
     }
 
     /**
      * Start the Reference Location calculation.
      */
     public static final void obtainReferenceLocation() {
-        refCalc.start();
+        REFCALC.start();
     }
 
     /**
@@ -167,7 +168,7 @@ public class Controller extends MDThread<Command> {
      * @throws IOException if problems
      */
     public static final void recordPoint() throws IOException {
-        recorder.recordPoint(information);
+        recorder.recordPoint(INFORMATION);
         view.dataChanged();
     }
 
@@ -177,7 +178,7 @@ public class Controller extends MDThread<Command> {
      * @throws IOException if problems
      */
     public static final void startStopRecording() throws IOException {
-        recorder.startStopRecording(information);
+        recorder.startStopRecording(INFORMATION);
         view.dataChanged();
     }
 
@@ -187,7 +188,7 @@ public class Controller extends MDThread<Command> {
      * @throws IOException if problems
      */
     public static final void cancelRecording() throws IOException {
-        recorder.cancelRecording(information);
+        recorder.cancelRecording(INFORMATION);
         view.dataChanged();
     }
 }

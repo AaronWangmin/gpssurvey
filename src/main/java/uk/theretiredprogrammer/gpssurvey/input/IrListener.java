@@ -47,7 +47,7 @@ public class IrListener extends MDThread<Command> {
     // i2c button_device button codes
     private final static byte POWERDOWN_BUTTON = 1;
     // i2c IR_device key code mappings (keys are 1 .. 9)
-    private final static Button[] mapKey2Button = new Button[]{
+    private final static Button[] MAPKEY2BUTTON = new Button[]{
         Button.POWER,
         Button.A,
         Button.B,
@@ -67,14 +67,15 @@ public class IrListener extends MDThread<Command> {
      * Create listening thread and start it.
      * 
      * @throws IOException if problems
+     * @throws com.pi4j.io.i2c.I2CFactory.UnsupportedBusNumberException if problem with definition
      */
-    public static void createAndStart() throws IOException {
+    public static void createAndStart() throws IOException, I2CFactory.UnsupportedBusNumberException {
         IrListener thread = new IrListener();
         thread.start();
         thread.sendMessage(Command.START);
     }
 
-    private IrListener() throws IOException {
+    private IrListener() throws IOException, I2CFactory.UnsupportedBusNumberException {
         super("IR Listener", Command.CLOSE);
         Reporting.registerControl("IR Listener", 'i');
         gpio = GpioFactory.getInstance();
@@ -126,7 +127,7 @@ public class IrListener extends MDThread<Command> {
                                 break;
                             case IR_DEVICE:
                                 if (key > 0) {
-                                    Button b = mapKey2Button[key - 1];
+                                    Button b = MAPKEY2BUTTON[key - 1];
                                     Reporting.report("IR Listener", 3, "Received IR message: " + b.toString());
                                     MDTService.sendMessage("Controller", Command.BUTTON, b);
                                 }
