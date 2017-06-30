@@ -17,7 +17,7 @@ GPS module, optional depth finder, [IRPlate](http://www.theretiredprogrammer.uk/
 It is is a Java standalone application running on a Raspbery PI, and requires the Java
 8 runtime environment
           
-**Current release**: v2.0.0-SNAPSHOT
+**Current release**: v2.0.0
                         
 **Project Status**: In active development
   
